@@ -9,6 +9,7 @@ Reusable Component
 
 [BaseRadio.vue](./BaseRadio.vue)
 
+### SimpleForm.vue (parent view)
 - event structure (defined in App)
 ```
       event: {
@@ -24,19 +25,39 @@ Reusable Component
       }
 ```
 
+### BaseRadio.vue (child component)
 
 ```
 <template>
   <input
-    type="checkbox" // inputs with this type don't trigger @input events
-    :checked="modelValue" // model is bound on checked property rather than value
-    @change="$emit('update:modelValue', $event.target.checked)" 
-      // change events are triggered (when using selected and onSelected)
-      // $event.target.checked is the value of the checked status, ":checked"
-    class="field"
-  />
+      type="radio"
+      :checked="modelValue === value" 
+            // checks to know is the current radio button is selected as checked or unchecked 
+            // (e.g. ModelValue/selection = 'Cat'; value/radiobutton is 'cat' therefore button is checked; 
+            // ModelValue/selection = 'cat'; value/radiobutton is 'dog' therefore button is unchecked;
+      :value="value"
+      v-bind="$attrs" // enables attribute injection into the correct element (e.g.: 'name'; (see 'Use' section)
+      @change="$emit('update:modelValue', value)"
+    />
   <label v-if="label">{{ label }}</label>
 </template>
+```
+
+```
+  props: {
+    label: {
+      type: String,
+      default: ''
+    },
+    modelValue: {
+      type: [String, Number], // indicates the model anc accept either Strings or Numbers
+      default: ''
+    },
+    value: {
+      type: [String, Number],
+      required: true
+    }
+  }
 ```
 
 ## Prerequisites
@@ -47,7 +68,7 @@ None
         <BaseRadio
           v-model="event.pets"
           :value="1"
-          label="Yes"
-          name="pets"
+          label="Yes" // what is seen on the front-end
+          name="pets" // name here will create groups between different buttons
         />
 ```
