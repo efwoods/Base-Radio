@@ -1,13 +1,13 @@
-# Base-Component
-Base Component
+# Base-Radio-Component
+Base Radio Component
 
 ## Purpose
 Reusable Component
 
 ## Explaination
-[Vue Mastery: BaseCheckbox](https://www.vuemastery.com/courses/vue3-forms/base-checkbox)
+[Vue Mastery: BaseRadio](https://www.vuemastery.com/courses/vue3-forms/base-radio)
 
-[BaseCheckbox.vue](./BaseCheckbox.vue)
+[BaseRadio.vue](./BaseRadio.vue)
 
 - event structure (defined in App)
 ```
