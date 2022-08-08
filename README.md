@@ -44,11 +44,10 @@ None
 
 ## Use
 ```
-        <BaseCheckbox
-          v-model="event.extras.catering"
-          label="Catering"
+        <BaseRadio
+          v-model="event.pets"
+          :value="1"
+          label="Yes"
+          name="pets"
         />
 ```
-
-
-[<BaseCheckbox v-model="event.extras.catering" label="Catering"/](https://gist.githubusercontent.com/efwoods/ea8d10c27ad2be109d75f607688fbe78/raw/a9af4127757421f9804e3ebc45a709a4f37af18d/BaseCheckbox.vue)
